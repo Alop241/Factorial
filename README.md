@@ -14,4 +14,4 @@ These are the steps I followed to complete the challenge
 4. Create small backend [pending]
 5. Add metric
 6. Draw metric
-7. Delete Metric
+7. Style metric
