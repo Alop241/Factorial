@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from 'next/head'
 import AppLayout from "../components/AppLayout"
-import Button from '../components/Button'
+import { Container } from '../components/Container'; 
 import Metric from '../components/Metric'
 
 import { colors } from "../styles/theme"
@@ -9,13 +9,26 @@ import { colors } from "../styles/theme"
 
 export default function Home() {
 
+  //TODO Get this values from API
+  const data = [
+    {x: 0, y: 8},
+    {x: 1, y: 5},
+    {x: 2, y: 4},
+    {x: 3, y: 9},
+    {x: 4, y: 1},
+    {x: 5, y: 7},
+    {x: 6, y: 6},
+    {x: 7, y: 3},
+    {x: 8, y: 2},
+    {x: 9, y: 8}
+    ];
+
   const [metricList, setMetricList] = useState([]);
 
-  const handleClick = () => {
-    //TODO
-    setMetricList(metricList.concat(<Metric key={metricList.length} />));
-    console.log("Add metric")
-  }
+  const onSubmit = (event) => {
+    event.preventDefault(event);
+    setMetricList(metricList.concat(<Metric key={metricList.length} data={data} name={event.target.name.value}/>));
+  };
 
   return (
     <>
@@ -30,10 +43,10 @@ export default function Home() {
           <h2>click the button to add a new metric</h2>
 
           <div>
-            <Button onClick={handleClick}>
-              Add new metric
-            </Button>
-            {metricList}
+             <Container triggerText="Add New Metric" onSubmit={onSubmit} />
+          </div>
+          <div className="grid-container">
+              {metricList}
           </div>
         </section>
       </AppLayout>
@@ -58,6 +71,16 @@ export default function Home() {
           color: ${colors.secondary};
           font-size: 21px;
           margin: 0;
+        }
+        div.grid-container{
+          display: grid; 
+          grid-template-columns: 1fr 1fr 1fr; 
+          grid-template-rows: 1fr; 
+          gap: 0px 0px; 
+          grid-template-areas: 
+            ". . ."
+            ". . ."
+            ". . ."; 
         }
       `}</style>
     </>
