@@ -1,4 +1,4 @@
-# Growth Engineer Challenge Alejandro López Moreno
+# Growth Engineer Challenge - Alejandro López Moreno
 
 ## Bring up dev env
 

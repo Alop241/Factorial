@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from 'next/head'
 import AppLayout from "../components/AppLayout"
 import Button from '../components/Button'
@@ -7,8 +8,15 @@ import { colors } from "../styles/theme"
 
 export default function Home() {
 
+  const Metric = () => {
+    return <div>Your metric here</div>;
+  };
+
+  const [metricList, setMetricList] = useState([]);
+
   const handleClick = () => {
     //TODO
+    setMetricList(metricList.concat(<Metric key={metricList.length} />));
     console.log("Add metric")
   }
 
@@ -28,6 +36,7 @@ export default function Home() {
             <Button onClick={handleClick}>
               Add new metric
             </Button>
+            {metricList}
           </div>
         </section>
       </AppLayout>
