@@ -2,15 +2,12 @@ import { useState } from "react";
 import Head from 'next/head'
 import AppLayout from "../components/AppLayout"
 import Button from '../components/Button'
+import Metric from '../components/Metric'
 
 import { colors } from "../styles/theme"
 
 
 export default function Home() {
-
-  const Metric = () => {
-    return <div>Your metric here</div>;
-  };
 
   const [metricList, setMetricList] = useState([]);
 
